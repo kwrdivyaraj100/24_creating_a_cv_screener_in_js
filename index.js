@@ -23,7 +23,7 @@ const data = [
         city: 'US',
         language: 'Python',
         framework: 'Django',
-        image: 'https://randomuser.me/api/portraits/women/65.jpg'
+        image: 'https://randomuser.me/api/portraits/women/95.jpg'
     },
     {
         name: 'Aishwarya Rai',
@@ -31,7 +31,7 @@ const data = [
         city: 'Mumbai',
         language: 'Python',
         framework: 'Flask',
-        image: 'https://randomuser.me/api/portraits/women/54.jpg'
+        image: 'https://randomuser.me/api/portraits/women/78.jpg'
     },
     {
         name: 'Rohit Sharma',
@@ -39,7 +39,7 @@ const data = [
         city: 'Jharkand',
         language: 'Go',
         framework: 'Go framework',
-        image: 'https://randomuser.me/api/portraits/men/61.jpg'
+        image: 'https://randomuser.me/api/portraits/men/41.jpg'
     }
 
 
@@ -64,12 +64,14 @@ const next = document.getElementById('next');
 next.addEventListener('click', nextCV);
 
 const candidates = cvIterator(data);
+nextCV();
 
 function nextCV() {
     const currentCandidate = candidates.next().value;
 
     let image = document.getElementById('image');
     let profile = document.getElementById('profile');
+    if(currentCandidate != undefined){
     image.innerHTML = `<img src = '${currentCandidate.image}'>`;
 
     profile.innerHTML = `<ul class="list-group">
@@ -79,4 +81,9 @@ function nextCV() {
     <li class="list-group-item">Primarily works on ${currentCandidate.language}</li>
     <li class="list-group-item">Uses ${currentCandidate.framework} framework</li>
   </ul>`;
+}
+else{
+    alert('End of candidate applications');
+    window.location.reload();
+}
 }
